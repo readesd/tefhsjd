@@ -1,0 +1,24 @@
+<!-- viewer.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Viewer Page</title>
+</head>
+<body>
+    <h1>Data Viewer Page</h1>
+    <ul id="userDataList"></ul>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        socket.on('userData', (data) => {
+            const listItem = document.createElement('li');
+            listItem.textContent = data;
+            document.getElementById('userDataList').appendChild(listItem);
+        });
+    </script>
+</body>
+</html>
